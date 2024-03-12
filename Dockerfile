@@ -16,7 +16,7 @@ ARG BRANCH_NAME=team_analytics
 ARG DIR_NAME=healthcare_team
 
 # Clone the Git repository. Here we dynamically specify the repository name using the variable defined earlier.
-RUN git clone https://github.com/nohjuhyeon/healthcare_team ${DIR_NAME}
+RUN git clone https://github.com/entangelk/marketing_stock ${DIR_NAME}
 
 # Changes the working directory to /app/${REPO_NAME}. This uses the variable to dynamically set the directory path.
 WORKDIR /app/${DIR_NAME}
@@ -33,3 +33,7 @@ RUN pip install -r requirements.txt
 
 # RUN rm -rf .git
 
+RUN apt-get update && apt-get install -y wget
+RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+RUN sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+RUN apt-get update && apt-get install -y google-chrome-stable

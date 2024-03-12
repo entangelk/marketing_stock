@@ -2,7 +2,7 @@ version: '3.9'
 services:
   jupyter_health:
     container_name: ${CONTAINER_PREFIX}_jupyter_health
-    image: healthcare_team
+    image: stock_maketing
     build:
       context: .
       dockerfile: Dockerfile
