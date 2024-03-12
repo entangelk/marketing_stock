@@ -13,8 +13,9 @@ imblearn
 xgboost
 lightgbm 
 pyLDAvis
-jinja2
+
 python-multipart
-python-jose[cryptography]
-passlib[bcrypt]
 pydantic-settings
+
+selenium
+chromedriver-autoinstaller
