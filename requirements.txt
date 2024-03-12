@@ -19,3 +19,4 @@ pydantic-settings
 
 selenium
 chromedriver-autoinstaller
+webdriver_manager

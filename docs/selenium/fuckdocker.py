@@ -4,10 +4,27 @@ from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
 import time
 import re
+
+
 webdriver_manager_directory = ChromeDriverManager().install()
 browser = webdriver.Chrome(service=ChromeService(webdriver_manager_directory))
 
+# from selenium.webdriver.chrome.options import Options
 
+# options = Options()
+# options.add_argument("--no-sandbox") #bypass OS security model
+# options.add_argument("--headless")
+# options.add_argument("--disable-dev-shm-usage") #overcome limited resource problems
+
+
+
+
+# s=ChromeService('./chromedriver')
+# driver = webdriver.Chrome(options=options, service=s)
+
+
+
+'''
 # 몽고db 저장
 from pymongo import MongoClient
 # mongodb에 접속
@@ -18,6 +35,7 @@ mongoClient = MongoClient("mongodb://localhost:27017")
 database = mongoClient["project_coliving"]
 # collection 작업
 room_infor = database['woojoo']
+'''
 
 # Chrome WebDriver의 capabilities 속성 사용
 capabilities = browser.capabilities
