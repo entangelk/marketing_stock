@@ -33,16 +33,15 @@ RUN pip install -r requirements.txt
 
 # RUN rm -rf .git
 
-RUN apt -y install wget
+# CHROME
+RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+RUN sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/goodle.list'
+RUN apt-get update
+RUN apt-get install -y google-chrome-stable
 
-RUN apt -y install unzip
-
-RUN apt -y install curl
-
-RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-
-RUN apt -y install ./google-chrome-stable_current_amd64.deb
-
-RUN wget -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/` curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE`/chromedriver_linux64.zip
-
-RUN unzip /tmp/chromedriver.zip chromedriver -d /usr/bin
+# CHROME_DRIVER
+RUN apt-get install -yqq unzip
+RUN apt-get install -y curl
+RUN wget -O /tmp/chromedriver.zip http://chromedriver.storage.googleapis.com/`curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE`/chromedriver_linux64.zip
+RUN unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/
+ENV DISPLAY=:99
